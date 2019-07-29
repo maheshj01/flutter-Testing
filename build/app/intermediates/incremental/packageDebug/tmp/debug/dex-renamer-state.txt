@@ -1,0 +1,4 @@
+#Mon Jul 29 16:41:38 IST 2019
+base.0=/home/altorum004/Documents/flutter_projects/testproject/build/app/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

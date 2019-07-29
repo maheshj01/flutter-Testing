@@ -1,0 +1,41 @@
+import 'dart:async';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
+import 'package:testproject/validation.dart';
+import 'HomePage.dart';
+
+class LoginBloc extends Validation {
+  final _emailcontroller = BehaviorSubject<String>();
+  final _passcontroller = BehaviorSubject<String>();
+
+//validating the email
+  Stream<String> get email => _emailcontroller.stream.transform(validate_email);
+
+// validating the password
+  Stream<String> get password =>
+      _passcontroller.stream.transform(validate_pass);
+
+  Stream<bool> get submit =>
+      Observable.combineLatest2(email, password, (e, p) => true);
+
+  Function(String) onEmailChanged(String text) {
+    _emailcontroller.sink.add(text);
+  }
+
+  Function(String) onPasswordChanged(String text) {
+    _passcontroller.sink.add(text);
+  }
+
+  void checkLogin(BuildContext context){
+    // print("email = ${_emailcontroller.value}\n password = ${_passcontroller.value}");
+    print("validate with database");// on Success
+    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomePage()));
+  }
+
+  void dispose() {
+    _emailcontroller.close();
+    _passcontroller.close();
+    print("Stream cLOSED");
+  }
+}
