@@ -1,6 +1,8 @@
 # testproject
 
-A new Flutter project.
+A Sample Flutter project showing Bloc Architecture and BDD Testing using Gherkins plugin.
+
+<img src="https://user-images.githubusercontent.com/31410839/62053001-52e08480-b234-11e9-8a8f-ae3a8d702795.gif">
 
 ## Getting Started
 
