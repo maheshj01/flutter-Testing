@@ -43,7 +43,7 @@ class CheckIfHomePageIsPresent extends Then1WithWorld<String, FlutterWorld> {
 
   @override
   // TODO: implement pattern
-  RegExp get pattern => RegExp("I have {string} on screen");
+  RegExp get pattern => RegExp("I should have {string} on screen");
 }
 
 class TapThumbUpButtonNTimes extends When2WithWorld<String, int, FlutterWorld> {

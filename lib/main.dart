@@ -114,21 +114,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: FlatButton(
-                          color: Colors.redAccent,
-                          onPressed: () {
-                            setState(() {
-                              // con.text="hello";
-                              print("button pressed" + con.text);
-                            });
-                          },
-                          child: Text(
-                            "On Press Rebuild entire UI",
-                          )),
-                    )
+                    // Container(
+                    //   height: 50,
+                    //   margin: EdgeInsets.symmetric(horizontal: 20),
+                    //   child: FlatButton(
+                    //       color: Colors.redAccent,
+                    //       onPressed: () {
+                    //         setState(() {
+                    //           // con.text="hello";
+                    //           print("button pressed" + con.text);
+                    //         });
+                    //       },
+                    //       child: Text(
+                    //         "On Press Rebuild entire UI",
+                    //       )),
+                    // )
                   ],
                 ))
           ],
