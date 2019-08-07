@@ -2,10 +2,10 @@ Feature: Main Screen Validates and then Logins and Checks if each product clicks
 
     Scenario: Validates the email when text is entered
         Given I have "emailfield" and "passfield" and "LoginButton"
-        When I fill the "emailfield" field with "altorum@gmail.com"
+        When I fill the "emailfield" field with "youremail@gmail.com"
         And I fill the "passfield" field with "somewrongpassword@"
         Then I tap the "LoginButton" button
-        Then I have "HomePage" on screen
+        Then I should have "HomePage" on screen
         Then I pause for 3 seconds
         When I tap "thumb_up3" button 10 times
         Then I expect the "claps3" to be "👏 110.0"
