@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:testproject/ProductModel.dart';
+import 'package:testproject/model/product_model.dart';
 
 class ProductListBloc {
   List<ProductModel> list =
@@ -68,13 +68,13 @@ class ProductListBloc {
   }
 
   void _updateFavourite(ProductModel product) {
-    if (product.fav_color == Colors.white) {
-      list[product.id].fav_color = Colors.red;
+    if (product.favColor == Colors.white) {
+      list[product.id].favColor = Colors.red;
       favouriteList.add(product);
       print("fav list = " + favouriteList.length.toString());
     } else {
       favouriteList.remove(product);
-      list[product.id].fav_color = Colors.white;
+      list[product.id].favColor = Colors.white;
     }
     // upudate current page list item with appropriate color
     productListSink.add(list);

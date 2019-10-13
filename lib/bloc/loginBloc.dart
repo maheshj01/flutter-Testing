@@ -2,10 +2,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:testproject/validation.dart';
-import 'HomePage.dart';
-import 'package:mailer/mailer.dart';
-import 'Passwords.dart';
+import 'package:testproject/bloc/validation.dart';
+import 'package:testproject/pages/HomePage.dart';
 
 class LoginBloc extends Validation {
   final _emailcontroller = BehaviorSubject<String>();
@@ -21,11 +19,11 @@ class LoginBloc extends Validation {
   Stream<bool> get submit =>
       Observable.combineLatest2(email, password, (e, p) => true);
 
-  Function(String) onEmailChanged(String text) {
+  void onEmailChanged(String text) {
     _emailcontroller.sink.add(text);
   }
 
-  Function(String) onPasswordChanged(String text) {
+  void onPasswordChanged(String text) {
     _passcontroller.sink.add(text);
   }
 

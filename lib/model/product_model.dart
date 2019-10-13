@@ -5,7 +5,7 @@ class ProductModel {
   int id;
   double price;
   bool favourite;
-  Color fav_color = Colors.white;
+  Color favColor = Colors.white;
 
   ProductModel(int id) {
     this.id = id;

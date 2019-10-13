@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:testproject/ListBloc.dart';
-import 'package:testproject/ProductModel.dart';
+import 'package:testproject/bloc/listBloc.dart';
+import 'package:testproject/model/product_model.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -203,7 +203,7 @@ Widget ProductList() {
                             },
                             icon: Icon(
                               Icons.favorite,
-                              color: snapshot.data[item].fav_color,
+                              color: snapshot.data[item].favColor,
                               size: 30,
                             ),
                           ),
