@@ -16,8 +16,7 @@ class LoginBloc extends Validation {
   Stream<String> get password =>
       _passcontroller.stream.transform(validate_pass);
 
-  Stream<bool> get submit =>
-      Observable.combineLatest2(email, password, (e, p) => true);
+  Stream<bool> get submit => Rx.combineLatest2(email, password, (e, p) => true);
 
   void onEmailChanged(String text) {
     _emailcontroller.sink.add(text);

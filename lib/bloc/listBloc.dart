@@ -4,9 +4,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:testproject/model/product_model.dart';
 
 class ProductListBloc {
-  List<ProductModel> list =
-      new List<ProductModel>.generate(20, (id) => ProductModel(id));
-
+  List<ProductModel> list;
   List<ProductModel> favouriteList = [];
 
   //StreamCOntroller to control the list stream and Behavior Subject to listen to the stream that has already been listened
@@ -43,8 +41,8 @@ class ProductListBloc {
   Stream<ProductModel> get get_like_product => _product_liked.stream;
 
   ProductListBloc() {
+    list = new List<ProductModel>.generate(100000, (id) => ProductModel(id));
     // initializes the list with ProductModels
-    print("list not generated");
     // adds the list to the streams
     _listcontroller.sink.add(list);
     // watch out if any data is pushed in the increment stream ? if so call _incrementprice method
@@ -68,15 +66,15 @@ class ProductListBloc {
   }
 
   void _updateFavourite(ProductModel product) {
-    if (product.favColor == Colors.white) {
-      list[product.id].favColor = Colors.red;
+    if (!product.isFavourite) {
+      list[product.id].isFavourite = true;
       favouriteList.add(product);
       print("fav list = " + favouriteList.length.toString());
     } else {
       favouriteList.remove(product);
-      list[product.id].favColor = Colors.white;
+      list[product.id].isFavourite = false;
     }
-    // upudate current page list item with appropriate color
+    // update favourate List and  Product List
     productListSink.add(list);
     favouriteListSink.add(favouriteList);
   }
