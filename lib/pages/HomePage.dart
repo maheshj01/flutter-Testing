@@ -30,6 +30,14 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         title: Text("Products"),
+        actions: [
+          StreamBuilder<int>(
+              stream: bloc.favCount.stream,
+              initialData: 0,
+              builder: (context, snapshot) {
+                return getCartWidget(quantity: snapshot.data);
+              })
+        ],
       ),
       body: Column(
         children: [
@@ -46,6 +54,38 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
     );
   }
+}
+
+Widget getCartWidget({int quantity = 0}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 5),
+    child: Stack(
+      children: [
+        Padding(
+            padding: const EdgeInsets.only(
+                left: 16.0, right: 8.0, top: 10, bottom: 10),
+            child: Icon(
+              Icons.shopping_basket,
+              size: 35,
+            )),
+        Positioned(
+            bottom: 5,
+            right: 16,
+            child: Container(
+              height: 18,
+              width: 18,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Colors.purple,
+                  borderRadius: BorderRadius.circular(50)),
+              child: Text(
+                '$quantity',
+                style: const TextStyle(fontSize: 11, color: Colors.white),
+              ),
+            ))
+      ],
+    ),
+  );
 }
 
 final bloc = new ProductListBloc();
@@ -116,7 +156,9 @@ Widget fav_list_widget() {
                     onPressed: () {},
                   ),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        bloc.likedProductModel.add(snapshot.data[item]);
+                      },
                       icon: Icon(
                         Icons.delete,
                         color: Colors.white,
@@ -210,7 +252,7 @@ Widget productList() {
                         key: Key("like" + snapshot.data[item].id.toString()),
                         onPressed: () {
                           print("liked");
-                          bloc.liked_product_model.add(snapshot.data[item]);
+                          bloc.likedProductModel.add(snapshot.data[item]);
                         },
                         icon: Icon(
                           Icons.favorite,

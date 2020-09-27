@@ -20,6 +20,8 @@ class ProductListBloc {
 
   final _product_liked = BehaviorSubject<ProductModel>();
 
+  final favCount = BehaviorSubject<int>();
+
 // get the latest productlist added to the stream
   Stream<List<ProductModel>> get productListStream => _listcontroller.stream;
 
@@ -36,7 +38,7 @@ class ProductListBloc {
 
   Stream<List<ProductModel>> get favouriteListStream => _favourite_list.stream;
 
-  StreamSink<ProductModel> get liked_product_model => _product_liked.sink;
+  StreamSink<ProductModel> get likedProductModel => _product_liked.sink;
 
   Stream<ProductModel> get get_like_product => _product_liked.stream;
 
@@ -75,6 +77,7 @@ class ProductListBloc {
       list[product.id].isFavourite = false;
     }
     // update favourate List and  Product List
+    favCount.sink.add(favouriteList.length);
     productListSink.add(list);
     favouriteListSink.add(favouriteList);
   }
@@ -90,5 +93,6 @@ class ProductListBloc {
     _increment.close();
     _favourite_list.close();
     _product_liked.close();
+    favCount.close();
   }
 }
