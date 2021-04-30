@@ -10,9 +10,12 @@ class CheckGivenWidgets
     final textinput1 = find.byValueKey(input1);
     final textinput2 = find.byValueKey(input2);
     final button = find.byValueKey(input3);
-    await FlutterDriverUtils.isPresent(textinput1, world.driver);
-    await FlutterDriverUtils.isPresent(textinput2, world.driver);
-    await FlutterDriverUtils.isPresent(button, world.driver);
+    await FlutterDriverUtils.isPresent(world.driver, textinput1);
+    await FlutterDriverUtils.isPresent(
+      world.driver,
+      textinput2,
+    );
+    await FlutterDriverUtils.isPresent(world.driver, button);
   }
 
   @override
@@ -37,7 +40,7 @@ class CheckIfHomePageIsPresent extends Then1WithWorld<String, FlutterWorld> {
   Future<void> executeStep(String input1) async {
     // TODO: implement executeStep
     final homefinder = find.byValueKey(input1);
-    await FlutterDriverUtils.isPresent(homefinder, world.driver);
+    await FlutterDriverUtils.isPresent(world.driver, homefinder);
     // await FlutterDriverUtils.waitForFlutter(world.driver);
   }
 
