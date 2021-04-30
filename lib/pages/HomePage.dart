@@ -104,6 +104,7 @@ Widget fav_list_widget() {
         return Center(child: Text("Empty :("));
       } else {
         return ListView.builder(
+          key: Key('favourateList'),
           itemCount: snapshot.data.length,
           itemBuilder: (BuildContext context, int item) {
             return Container(
@@ -192,6 +193,7 @@ Widget productList() {
             return Center(child: CircularProgressIndicator());
           } else {
             return ListView.builder(
+              key: Key('productList'),
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext context, int item) {
                 return Container(

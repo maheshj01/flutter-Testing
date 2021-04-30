@@ -113,5 +113,26 @@ class TapFavouratePage extends Then1WithWorld<String, FlutterWorld> {
 
   @override
   // TODO: implement pattern
-  RegExp get pattern => RegExp(r"Then I tap {string} page");
+  RegExp get pattern => RegExp(r"I tap {string} page");
+}
+
+class ScrollTillItemVisible
+    extends Then2WithWorld<String, String, FlutterWorld> {
+  @override
+  Future<void> executeStep(String listKey, String itemKey) async {
+    // TODO: implement executeStep
+    final listFinder = find.byValueKey(listKey);
+    final itemfinder = find.byValueKey(itemKey);
+    bool isPresent = false;
+    while (!isPresent) {
+      await world.driver.scroll(
+          listFinder, 0.0, -1000.0, const Duration(milliseconds: 300),
+          timeout: Duration(seconds: 20));
+      isPresent = await FlutterDriverUtils.isPresent(world.driver, itemfinder);
+    }
+  }
+
+  @override
+  // TODO: implement pattern
+  RegExp get pattern => RegExp(r"I scroll {string} till {string} is visible");
 }

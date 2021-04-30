@@ -10,8 +10,9 @@ Feature: Main Screen Validates and then Logins and Checks if each product clicks
         Then I pause for 3 seconds
         When I tap "thumb_up3" button 10 times
         Then I expect the "claps3" to be "👏 110.0"
-        When I tap "thumb_down4" button 10 times
-        Then I expect the "claps4" to be "👏 90.0"
+        Then I scroll "productList" till "thumb_down40" is visible
+        When I tap "thumb_down40" button 10 times
+        Then I expect the "claps40" to be "👏 90.0"
         Then I tap "FavouratePage" page
         Then I pause for 3 seconds
         Then I tap "ProductPage" page
