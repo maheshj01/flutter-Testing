@@ -2,6 +2,11 @@
 
 A Sample Flutter project showing Bloc Architecture and BDD Testing using Gherkins plugin.
 
+
+ - Clone the project
+ - Run ```flutter pub get```
+ - Run the tests using ```dart test_driver/test_config.dart```
+
 <img src="https://user-images.githubusercontent.com/31410839/62053001-52e08480-b234-11e9-8a8f-ae3a8d702795.gif">
 <img src="https://user-images.githubusercontent.com/31410839/62713547-8c767400-ba1a-11e9-8138-f78bc5124719.gif">
 
