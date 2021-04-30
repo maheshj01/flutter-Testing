@@ -10,12 +10,17 @@ class CheckGivenWidgets
     final textinput1 = find.byValueKey(input1);
     final textinput2 = find.byValueKey(input2);
     final button = find.byValueKey(input3);
-    await FlutterDriverUtils.isPresent(world.driver, textinput1);
-    await FlutterDriverUtils.isPresent(
+    bool input1Exists =
+        await FlutterDriverUtils.isPresent(world.driver, textinput1);
+    bool input2Exists = await FlutterDriverUtils.isPresent(
       world.driver,
       textinput2,
     );
-    await FlutterDriverUtils.isPresent(world.driver, button);
+    bool buttonExists =
+        await FlutterDriverUtils.isPresent(world.driver, button);
+    expect(input1Exists, true);
+    expect(input2Exists, true);
+    expect(buttonExists, true);
   }
 
   @override
@@ -40,13 +45,15 @@ class CheckIfHomePageIsPresent extends Then1WithWorld<String, FlutterWorld> {
   Future<void> executeStep(String input1) async {
     // TODO: implement executeStep
     final homefinder = find.byValueKey(input1);
-    await FlutterDriverUtils.isPresent(world.driver, homefinder);
+    bool isPresent =
+        await FlutterDriverUtils.isPresent(world.driver, homefinder);
+    expect(isPresent, true);
     // await FlutterDriverUtils.waitForFlutter(world.driver);
   }
 
   @override
   // TODO: implement pattern
-  RegExp get pattern => RegExp("I should have {string} on screen");
+  RegExp get pattern => RegExp("I have {string} on screen");
 }
 
 class TapThumbUpButtonNTimes extends When2WithWorld<String, int, FlutterWorld> {

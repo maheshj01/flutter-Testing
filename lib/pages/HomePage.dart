@@ -11,9 +11,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   final List<Tab> tabs = [
     Tab(
       text: "Product List",
+      key: Key('ProductPage'),
     ),
     Tab(
       text: 'Favourite List',
+      key: Key('FavouratePage'),
     ),
   ];
 
@@ -29,15 +31,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        key: Key('HomePage'),
         title: Text("Products"),
-        actions: [
-          StreamBuilder<int>(
-              stream: bloc.favCount.stream,
-              initialData: 0,
-              builder: (context, snapshot) {
-                return getCartWidget(quantity: snapshot.data);
-              })
-        ],
+        // actions: [
+        //   StreamBuilder<int>(
+        //       stream: bloc.favCount.stream,
+        //       initialData: 0,
+        //       builder: (context, snapshot) {
+        //         return getCartWidget(quantity: snapshot.data);
+        //       })
+        // ],
       ),
       body: Column(
         children: [
