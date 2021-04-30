@@ -5,7 +5,6 @@ Feature: Main Screen Validates and then Logins and Checks if each product clicks
         When I fill the "emailfield" field with "youremail@gmail.com"
         And I fill the "passfield" field with "somewrongpassword@"
         Then I tap the "LoginButton" button
-        Then I pause for 2 seconds
         Then I have "HomePage" on screen
         Then I pause for 3 seconds
         When I tap "thumb_up3" button 10 times
